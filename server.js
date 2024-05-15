@@ -1,7 +1,19 @@
-import app from "./app.js";
+import mongoose from "mongoose";
 
-const PORT = process.env.PORT || 4000;
+import { app } from "./app.js";
 
-app.listen(PORT, () => {
-  console.log("server on");
-});
+const { MONGODB, PORT = 3000 } = process.env;
+
+mongoose
+  .connect(MONGODB)
+  .then(() => {
+    console.log("Mongo on");
+    app.listen(PORT, () => {
+      console.log("server on");
+    });
+  })
+  .catch(() => {
+    process.exit(1);
+  });
+
+console.log("MY PORT", PORT);
