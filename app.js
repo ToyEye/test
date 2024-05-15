@@ -3,7 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import "dotenv/config";
 
-const app = express();
+export const app = express();
 
 app.use(morgan("tiny"));
 app.use(cors());
@@ -17,5 +17,3 @@ app.use((error, req, res, next) => {
   const { status = 500, message = "Server error" } = error;
   res.status(status).json({ message });
 });
-
-export default app;
