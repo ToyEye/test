@@ -17,3 +17,4 @@ mongoose
   });
 
 console.log("MY PORT", PORT);
+console.log("MY PORT", MONGODB);
